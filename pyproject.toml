@@ -33,8 +33,18 @@ Documentation = "https://github.com/minrk/jupyter-keepalive#readme"
 Issues = "https://github.com/minrk/jupyter-keepalive/issues"
 Source = "https://github.com/minrk/jupyter-keepalive"
 
+[project.optional-dependencies]
+test = [
+  "jupyter_server[test]",
+  "pytest",
+  "pytest-asyncio",
+  "pytest-cov",
+]
 [tool.hatch.version]
 path = "jupyter_keepalive/__init__.py"
+
+[tool.hatch.build.targets.wheel.shared-data]
+"jupyter-config" = "etc/jupyter/jupyter_server_config.d"
 
 [tool.coverage.run]
 branch = true
