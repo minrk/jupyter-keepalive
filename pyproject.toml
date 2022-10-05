@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "jupyterlab"]
 build-backend = "hatchling.build"
 
 [project]
@@ -45,6 +45,10 @@ path = "jupyter_keepalive/__init__.py"
 
 [tool.hatch.build.targets.wheel.shared-data]
 "jupyter-config" = "etc/jupyter/jupyter_server_config.d"
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder"]
+build-function = "hatch_jupyter_builder.npm_builder"
 
 [tool.coverage.run]
 branch = true
