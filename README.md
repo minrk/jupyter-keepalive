@@ -3,7 +3,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/jupyter-keepalive.svg)](https://pypi.org/project/jupyter-keepalive)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/jupyter-keepalive.svg)](https://pypi.org/project/jupyter-keepalive)
 
------
+---
 
 **Table of Contents**
 
