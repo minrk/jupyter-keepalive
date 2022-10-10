@@ -75,7 +75,7 @@ const extension: JupyterFrontEndPlugin<void> = {
       console.log(reply);
     } catch (reason) {
       console.error(
-        `Error on POST /jlab-ext-example/hello ${dataToSend}.\n${reason}`
+        `Error on POST /jlab-ext-example/hello ${dataToSend}.\n${reason}`,
       );
     }
 
