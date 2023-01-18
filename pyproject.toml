@@ -43,12 +43,33 @@ test = [
 [tool.hatch.version]
 path = "jupyter_keepalive/__init__.py"
 
+[tool.hatch.build.targets.sdist]
+artifacts = [
+    "jupyter_keepalive/labextension",
+]
+
+[tool.hatch.build.targets.wheel]
+artifacts = [
+    "jupyter_keepalive/labextension",
+]
+
 [tool.hatch.build.targets.wheel.shared-data]
 "jupyter-config" = "etc/jupyter/jupyter_server_config.d"
+
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder"]
 build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "jupyter_keepalive/labextension/static/style.js",
+    "jupyter_keepalive/labextension/package.json",
+]
+skip-if-exists = ["jupyter_keepalive/labextension/package.json"]
+
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+source_dir = "src"
+build_dir = "jupyter_keepalive/labextension"
 
 [tool.coverage.run]
 branch = true
@@ -60,3 +81,29 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+[tool.tbump]
+github_url = "https://github.com/minrk/jupyter-keepalive"
+
+[tool.tbump.version]
+current = "0.0.1.dev"
+regex = '''
+    (?P<major>\d+)
+    \.
+    (?P<minor>\d+)
+    \.
+    (?P<patch>\d+)
+    (?P<pre>((a|b|rc)\d+)|)
+    \.?
+    (?P<dev>(?<=\.)dev\d*|)
+'''
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "{new_version}"
+
+[[tool.tbump.file]]
+src = "jupyter_keepalive/__init__.py"
+
+[[tool.tbump.file]]
+src = "package.json"
