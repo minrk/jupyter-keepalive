@@ -1,6 +1,6 @@
 {
   "name": "@minrk/jupyter-keepalive",
-  "version": "0.0.1.dev",
+  "version": "0.0.1",
   "description": "A minimal JupyterLab extension with backend and frontend parts.",
   "keywords": [
     "jupyter",
