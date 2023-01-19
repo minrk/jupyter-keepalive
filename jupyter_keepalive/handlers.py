@@ -23,11 +23,12 @@ class Spinner:
         """
         self.stop()
         gen_log.info(f"Keeping Jupyter server active for {timedelta(seconds=seconds)}")
+        start = time.monotonic()
+        self.deadline = start + seconds
         self._task = asyncio.create_task(self._spin(seconds))
 
     async def _spin(self, seconds):
-        start = time.monotonic()
-        deadline = self.deadline = start + seconds
+        deadline = self.deadline or 0
         while time.monotonic() < deadline:
             gen_log.debug("Setting keepalive activity")
             self.last_activity_times["jupyter-keepalive"] = datetime.now(timezone.utc)
@@ -38,8 +39,8 @@ class Spinner:
         """Stop keeping alive"""
         if self._task is not None and not self._task.done():
             gen_log.info("Stopping keepalive spinner")
-
             self._task.cancel()
+        self.deadline = None
         self._task = None
 
     @property
@@ -65,6 +66,14 @@ class KeepAliveHandler(APIHandler):
             )
         self.spinner = self.settings["keepalive_spinner"]
 
+    @property
+    def _state(self):
+        return {"remaining": self.spinner.remaining}
+
+    def _write_state(self):
+        """Write the current state as JSON reply"""
+        self.write(json.dumps(self._state))
+
     @web.authenticated
     def post(self):
         body = self.get_json_body()
@@ -73,6 +82,7 @@ class KeepAliveHandler(APIHandler):
         else:
             seconds = body.get("seconds", DAY_SECONDS)
         self.spinner.start(seconds)
+        self._write_state()
 
     @web.authenticated
     def delete(self):
@@ -80,4 +90,4 @@ class KeepAliveHandler(APIHandler):
 
     @web.authenticated
     def get(self):
-        self.write(json.dumps({"remaining": self.spinner.remaining}))
+        self._write_state()

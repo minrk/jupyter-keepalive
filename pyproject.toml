@@ -107,3 +107,4 @@ src = "jupyter_keepalive/__init__.py"
 
 [[tool.tbump.file]]
 src = "package.json"
+version_template = "{major}.{minor}.{patch}"
