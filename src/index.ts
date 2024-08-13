@@ -30,7 +30,7 @@ async function keepAliveRequest(endPoint = "", init = {}) {
   let response: Response;
   try {
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
-  } catch (error) {
+  } catch (error: any) {
     throw new ServerConnection.NetworkError(error);
   }
   const responseJSON = await response.text();
