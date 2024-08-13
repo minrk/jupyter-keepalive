@@ -36,6 +36,7 @@ jobs:
 
       - name: install build requirements
         run: |
+          npm install -g yarn@3.8.4
           corepack enable
           yarn set version 3 # JupyterLab wants yarn version 3
           pip install --upgrade pip
