@@ -75,5 +75,6 @@
     },
     "extension": true,
     "outputDir": "jupyter_keepalive/labextension"
-  }
+  },
+  "packageManager": "yarn@3.8.4"
 }
