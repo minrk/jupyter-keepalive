@@ -37,6 +37,7 @@ jobs:
       - name: install build requirements
         run: |
           npm install -g yarn
+          yarn set version 3 # JupyterLab wants yarn version 3
           pip install --upgrade pip
           pip install build pytest
           pip freeze
