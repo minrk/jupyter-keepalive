@@ -40,6 +40,8 @@ jobs:
           pip install --upgrade pip
           pip install build pytest
           pip freeze
+          # Apparently we need to intentionally install this first?
+          npm i @jupyterlab/builder
 
       - name: build release
         run: |
