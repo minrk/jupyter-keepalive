@@ -235,7 +235,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/builder@npm:^4.2.0":
+"@jupyterlab/builder@npm:^4.2.4":
   version: 4.2.4
   resolution: "@jupyterlab/builder@npm:4.2.4"
   dependencies:
@@ -705,12 +705,15 @@ __metadata:
   resolution: "@minrk/jupyter-keepalive@workspace:."
   dependencies:
     "@jupyterlab/application": ^4.1.4
-    "@jupyterlab/builder": ^4.2.0
+    "@jupyterlab/apputils": ^4.3.4
+    "@jupyterlab/builder": ^4.2.4
     "@jupyterlab/coreutils": ^6.2.4
     "@jupyterlab/services": ^7.2.4
     "@jupyterlab/statusbar": ^4.2.4
     "@lumino/signaling": ^2.1.0
     "@lumino/widgets": ^2.5.0
+    "@types/json-schema": ^7.0.11
+    "@types/react": ^18.0.26
     eslint: ^7.14.0
     eslint-plugin-react: ^7.18.3
     mkdirp: ^1.0.3
@@ -779,7 +782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
+"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.11, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 97ed0cb44d4070aecea772b7b2e2ed971e10c81ec87dd4ecc160322ffa55ff330dace1793489540e3e318d90942064bb697cc0f8989391797792d919737b3b98
@@ -2322,21 +2325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.1.3":
-  version: 7.2.3
-  resolution: "glob@npm:7.2.3"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^3.1.1
-    once: ^1.3.0
-    path-is-absolute: ^1.0.0
-  checksum: 29452e97b38fa704dabb1d1045350fb2467cf0277e155aa9ff7077e90ad81d1ea9d53d3ee63bd37c05b09a065e90f16aec4a65f5b8de401d1dac40bc5605d133
-  languageName: node
-  linkType: hard
-
-"glob@npm:~7.1.6":
+"glob@npm:^7.1.3, glob@npm:~7.1.6":
   version: 7.1.7
   resolution: "glob@npm:7.1.7"
   dependencies:
@@ -3164,7 +3153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.0.4, minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
+"minimatch@npm:^3.0.4, minimatch@npm:^3.1.2":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
   dependencies:
