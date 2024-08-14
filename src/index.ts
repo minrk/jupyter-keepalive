@@ -149,7 +149,8 @@ class KeepAliveExtension {
           keepAliveStatusWidget.node.title = `Jupyter Server will not appear idle idle for ${remaining_text}`;
           keepAliveStatusWidget.node.appendChild(span);
         } else {
-          keepAliveStatusWidget.node.textContent = "Keepalive: inactive";
+          // Don't show anything when inactive
+          keepAliveStatusWidget.node.textContent = "";
         }
       },
     );
