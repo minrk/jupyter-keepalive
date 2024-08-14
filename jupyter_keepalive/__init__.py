@@ -1,4 +1,4 @@
-__version__ = "0.3.0"
+__version__ = "0.4.0.dev"
 
 
 from jupyter_server.utils import url_path_join
