@@ -140,7 +140,7 @@ class KeepAliveExtension {
           const remaining_text = formatSeconds(remaining);
           keepAliveStatusWidget.node.textContent = "";
           const span = document.createElement("span");
-          span.textContent = `keepalive: ${remaining_text}`;
+          span.textContent = `Keepalive: ${remaining_text}`;
           // TODO: import css?
           // css is copied from TextItem, but using TextItem is incredibly complicated apparently
           span.style.cssText =
@@ -149,8 +149,7 @@ class KeepAliveExtension {
           keepAliveStatusWidget.node.title = `Jupyter Server will not appear idle idle for ${remaining_text}`;
           keepAliveStatusWidget.node.appendChild(span);
         } else {
-          // any info for 'not' alive?
-          keepAliveStatusWidget.node.textContent = "";
+          keepAliveStatusWidget.node.textContent = "Keepalive: inactive";
         }
       },
     );
@@ -158,7 +157,7 @@ class KeepAliveExtension {
     statusBar.registerStatusItem("keepalive", {
       align: "left",
       item: keepAliveStatusWidget,
-      isActive: () => this.remaining > 0,
+      isActive: () => true // Always actice
     });
   }
 
