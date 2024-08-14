@@ -132,3 +132,4 @@ node_modules
 .yarn
 jupyter_keepalive/labextension
 tsconfig.tsbuildinfo
+.pnp.*
