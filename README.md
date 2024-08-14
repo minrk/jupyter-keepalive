@@ -32,7 +32,8 @@ you want your server to be kept open regardless of activity.
 
 "Stop keeping server alive" stops the keepalive functionality, and lets the idle culler do its job.
 
-"Check keepalive status" refreshes the keepalive status, which is displayed in the statusbar at the bottom.
+"Check keepalive status" refreshes the keepalive status, which is displayed in the statusbar at the bottom
+when keepalive is active. No status bar item is present when keepalive is inactive.
 
 ![Status Bar showing how much longer your server will be kept alive](screenshots/statusbar.png)
 
