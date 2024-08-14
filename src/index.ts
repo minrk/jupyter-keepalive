@@ -158,7 +158,7 @@ class KeepAliveExtension {
     statusBar.registerStatusItem("keepalive", {
       align: "left",
       item: keepAliveStatusWidget,
-      isActive: () => true // Always actice
+      isActive: () => true, // Always actice
     });
   }
 
