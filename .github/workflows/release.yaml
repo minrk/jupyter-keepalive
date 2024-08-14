@@ -32,11 +32,11 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "22"
 
       - name: install build requirements
         run: |
-          npm install -g yarn
+          corepack enable
           pip install --upgrade pip
           pip install build pytest
           pip freeze

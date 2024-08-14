@@ -130,5 +130,4 @@ dmypy.json
 
 node_modules
 jupyter_keepalive/labextension
-*.lock
 tsconfig.tsbuildinfo
