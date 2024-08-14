@@ -11,6 +11,7 @@ license = "BSD-3-Clause"
 keywords = []
 authors = [
   { name = "Min RK", email = "benjaminrk@gmail.com" },
+  { name = "Yuvi", email = "yuvipanda@gmail.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
