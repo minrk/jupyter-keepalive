@@ -79,5 +79,10 @@
     "extension": true,
     "outputDir": "jupyter_keepalive/labextension"
   },
-  "packageManager": "yarn@4.4.0"
+  "resolutions": {
+    "@types/react": "^18.0.26",
+    "react": "^18.2.0",
+    "yjs": "^13.5.40"
+  },
+  "packageManager": "yarn@3.5.0"
 }
