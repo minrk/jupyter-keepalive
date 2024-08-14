@@ -55,6 +55,7 @@ artifacts = [
 
 [tool.hatch.build.targets.wheel.shared-data]
 "jupyter-config" = "etc/jupyter/jupyter_server_config.d"
+"jupyter_keepalive/labextension" = "share/jupyter/labextensions/@minrk/jupyter-keepalive"
 
 
 [tool.hatch.build.hooks.jupyter-builder]
