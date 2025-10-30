@@ -22,7 +22,9 @@ class Spinner:
         Keep the Jupyter server active for `seconds` seconds.
         """
         self.stop()
-        self.logger.info(f"Keeping Jupyter server active for {timedelta(seconds=seconds)}")
+        self.logger.info(
+            f"Keeping Jupyter server active for {timedelta(seconds=seconds)}"
+        )
         start = time.monotonic()
         self.deadline = start + seconds
         self._task = asyncio.create_task(self._spin(seconds))
@@ -62,8 +64,7 @@ class KeepAliveHandler(APIHandler):
     def initialize(self, logger=None):
         if "keepalive_spinner" not in self.settings:
             self.settings["keepalive_spinner"] = Spinner(
-                self.settings["last_activity_times"],
-                logger=logger
+                self.settings["last_activity_times"], logger=logger
             )
         self.spinner = self.settings["keepalive_spinner"]
 
