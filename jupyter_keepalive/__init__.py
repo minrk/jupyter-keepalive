@@ -25,4 +25,6 @@ def _load_jupyter_server_extension(serverapp):
     web_app = serverapp.web_app
     host_pattern = ".*$"
     route_pattern = url_path_join(web_app.settings["base_url"], r"/ext-keepalive")
-    web_app.add_handlers(host_pattern, [(route_pattern, KeepAliveHandler)])
+    web_app.add_handlers(host_pattern, [
+        (route_pattern, KeepAliveHandler, {'logger': serverapp.log})
+        ])
