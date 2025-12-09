@@ -5,12 +5,12 @@ from datetime import datetime, timedelta, timezone
 
 from jupyter_server.base.handlers import APIHandler
 from tornado import web
-from tornado.log import gen_log
 
 
 class Spinner:
-    def __init__(self, last_activity_times, spin_interval=60):
+    def __init__(self, last_activity_times, logger, spin_interval=60):
         self.last_activity_times = last_activity_times
+        self.logger = logger
         self.spinning = False
         self.spin_interval = spin_interval
         self._task = None
@@ -22,7 +22,9 @@ class Spinner:
         Keep the Jupyter server active for `seconds` seconds.
         """
         self.stop()
-        gen_log.info(f"Keeping Jupyter server active for {timedelta(seconds=seconds)}")
+        self.logger.info(
+            f"Keeping Jupyter server active for {timedelta(seconds=seconds)}"
+        )
         start = time.monotonic()
         self.deadline = start + seconds
         self._task = asyncio.create_task(self._spin(seconds))
@@ -30,15 +32,15 @@ class Spinner:
     async def _spin(self, seconds):
         deadline = self.deadline or 0
         while time.monotonic() < deadline:
-            gen_log.debug("Setting keepalive activity")
+            self.logger.debug("Setting keepalive activity")
             self.last_activity_times["jupyter-keepalive"] = datetime.now(timezone.utc)
             await asyncio.sleep(self.spin_interval)
-        gen_log.info(f"Keepalive finished after {timedelta(seconds=seconds)}")
+        self.logger.info(f"Keepalive finished after {timedelta(seconds=seconds)}")
 
     def stop(self):
         """Stop keeping alive"""
         if self._task is not None and not self._task.done():
-            gen_log.info("Stopping keepalive spinner")
+            self.logger.info("Stopping keepalive spinner")
             self._task.cancel()
         self.deadline = None
         self._task = None
@@ -59,10 +61,10 @@ DAY_SECONDS = 24 * 60 * 60
 
 
 class KeepAliveHandler(APIHandler):
-    def initialize(self):
+    def initialize(self, logger=None):
         if "keepalive_spinner" not in self.settings:
             self.settings["keepalive_spinner"] = Spinner(
-                self.settings["last_activity_times"]
+                self.settings["last_activity_times"], logger=logger
             )
         self.spinner = self.settings["keepalive_spinner"]
 
