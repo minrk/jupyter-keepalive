@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v6
         with:
-          python-version: "3.10"
+          python-version: "3.13"
 
       - uses: actions/setup-node@v3
         with:
@@ -56,7 +56,7 @@ jobs:
           pytest ./ci/check_installed_data.py
 
       # ref: https://github.com/actions/upload-artifact#readme
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v5
         with:
           name: jupyter-keepalive-${{ github.sha }}
           path: "dist/*"
