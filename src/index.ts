@@ -30,7 +30,7 @@ async function keepAliveRequest(endPoint = "", init = {}) {
   let response: Response;
   try {
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
-  } catch (error: any) {
+  } catch (error) {
     throw new ServerConnection.NetworkError(error);
   }
   const responseJSON = await response.text();
@@ -120,7 +120,7 @@ class KeepAliveExtension {
     } else if (remaining < 120) {
       // every 2 seconds if we're within 2 minutes
       timeout = 2;
-    } else if (remaining < 60) {
+    } else if (remaining < 3600) {
       // every minute if we're within an hour
       timeout = 60;
     } else {
