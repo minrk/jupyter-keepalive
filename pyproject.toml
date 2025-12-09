@@ -72,6 +72,7 @@ skip-if-exists = ["jupyter_keepalive/labextension/package.json"]
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 source_dir = "src"
 build_dir = "jupyter_keepalive/labextension"
+npm = ["jlpm"]
 
 [tool.coverage.run]
 branch = true
