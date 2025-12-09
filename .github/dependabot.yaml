@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    groups:
+      # group official actions updates
+      actions:
+        patterns:
+          - actions/*
+    schedule:
+      interval: monthly
+  - package-ecosystem: npm
+    directory: /
+    groups:
+      # one big pull request for minor bumps
+      npm-minor:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    schedule:
+      interval: monthly
