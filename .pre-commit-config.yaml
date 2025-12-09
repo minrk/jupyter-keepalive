@@ -10,6 +10,9 @@
 #
 ci:
   autoupdate_schedule: quarterly
+  skip:
+    # pre-commit can't run eslint on ci
+    - eslint
 repos:
   # Autoformat: Python code, syntax patterns are modernized
   - repo: https://github.com/asottile/pyupgrade
@@ -51,3 +54,11 @@ repos:
     rev: "7.3.0"
     hooks:
       - id: flake8
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: npm run eslint
+        language: node
+        types_or: [ts, tsx, javascript, jsx]
