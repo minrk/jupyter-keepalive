@@ -45,23 +45,23 @@
     "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^4.1.4",
-    "@jupyterlab/apputils": "^4.3.4",
-    "@jupyterlab/coreutils": "^6.2.4",
-    "@jupyterlab/services": "^7.2.4",
-    "@jupyterlab/statusbar": "^4.2.4",
-    "@lumino/signaling": "^2.1.3",
-    "@lumino/widgets": "^2.5.0"
+    "@jupyterlab/application": "^4.5.0",
+    "@jupyterlab/apputils": "^4.6.0",
+    "@jupyterlab/coreutils": "^6.5.0",
+    "@jupyterlab/services": "^7.5.0",
+    "@jupyterlab/statusbar": "^4.5.0",
+    "@lumino/signaling": "^2.1.5",
+    "@lumino/widgets": "^2.7.2"
   },
   "devDependencies": {
-    "@jupyterlab/builder": "^4.2.4",
+    "@jupyterlab/builder": "^4.5.0",
     "@types/json-schema": "^7.0.11",
     "@types/react": "^18.0.26",
     "eslint": "^7.14.0",
-    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react": "^7.37.5",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^6.0.1",
-    "typescript": "~5.5.4",
+    "rimraf": "^6.1.2",
+    "typescript": "~5.9.3",
     "yarn-deduplicate": "^6.0.2"
   },
   "jupyterlab": {

@@ -74,7 +74,7 @@ function parseTime(ts: string): number {
 
   let part: keyof typeof multipliers;
   for (part in multipliers) {
-    if (match.groups[part] !== undefined) {
+    if (match.groups && match.groups[part] !== undefined) {
       seconds += multipliers[part] * parseInt(match.groups[part]);
     }
   }
