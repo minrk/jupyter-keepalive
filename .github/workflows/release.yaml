@@ -57,7 +57,7 @@ jobs:
           pip install dist/*.whl
           pytest ./ci/check_installed_data.py
       - name: upload dists
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ github.repository.name }}-dist
           path: dist/
@@ -75,7 +75,7 @@ jobs:
 
     steps:
       - name: Get release artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: ${{ github.repository.name }}-dist
           path: dist/
